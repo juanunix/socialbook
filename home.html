@@ -59,23 +59,26 @@
     </nav>
 </div>
 <div class="home main">
-    <section class="post-new">
+    <form class="post-new" action="post.html">
         <div class="post-input">
             <input type="text" placeholder="What you thinking?"/>
-            <img src="icons/ic_photo_camera_black_36px.svg" alt="Photo camera icon" class="photo-camera-icon">
+            <img id="photo-camera-icon" src="icons/ic_photo_camera_black_36px.svg" alt="Photo camera icon" class="photo-camera-icon">
+            <input id="post-input-photo" type="file" accept="image/*" hidden>
         </div>
         <div class="post-button">
             <button>
                 Post
             </button>
         </div>
-    </section>
+    </form>
     <section class="posts-list">
-        <div class="post">
+        <div class="post" onclick="window.location='post.html';">
             <div class="post-user">
-                <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.io.png" alt="User profile image">
+                <a href="user.html">
+                    <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.io.png" alt="User profile image">
+                </a>
                 <div class="user-info">
-                    <span class="user-name">Priyanshu Jindal</span>
+                    <a href="user.html" class="user-name">Priyanshu Jindal</a>
                     <span class="user-time">5 hours ago</span>
                 </div>
             </div>
@@ -86,11 +89,13 @@
             </div>
         </div>
 
-        <div class="post">
+        <div class="post" onclick="window.location='post.html';">
             <div class="post-user">
-                <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.png" alt="User profile image">
+                <a href="user.html">
+                    <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.png" alt="User profile image">
+                </a>
                 <div class="user-info">
-                    <span class="user-name">Random User</span>
+                    <a href="user.html" class="user-name">Random User</a>
                     <span class="user-time">9 hours ago</span>
                 </div>
             </div>
@@ -102,11 +107,13 @@
             </div>
         </div>
 
-        <div class="post">
+        <div class="post" onclick="window.location='post.html';">
             <div class="post-user">
-                <img class="avatar" src="https://api.adorable.io/avatars/48/xwxwxwxwxw" alt="User profile image">
+                <a href="user.html">
+                    <img class="avatar" src="https://api.adorable.io/avatars/48/xwxwxwxwxw" alt="User profile image">
+                </a>
                 <div class="user-info">
-                    <span class="user-name">Another User</span>
+                    <a href="user.html" class="user-name">Another User</a>
                     <span class="user-time">1 day ago</span>
                 </div>
             </div>

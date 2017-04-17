@@ -113,8 +113,13 @@ button:focus{
     box-shadow: var(--elevation-8);
 }
 
+form {
+    margin-bottom: 0;
+}
+
 a {
     color: var(--primary-dark);
+    text-decoration: none;
 }
 a:hover {
     color: var(--primary);
@@ -126,6 +131,7 @@ a:hover {
     margin: 0 12px;
     border: 1px solid var(--secondary-text);
     border-radius: 50%;
+    cursor: pointer;
 }
 
 /***********************
@@ -417,6 +423,10 @@ body:not(.login) {
 Home Page
 ************************/
 
+.home {
+    padding-bottom: 8px;
+}
+
 /* New Post Input */
 .home .post-new {
     border: 1px solid var(--divider);
@@ -469,6 +479,7 @@ Home Page
 .post {
     border: 1px solid var(--divider);
     background-color: var(--white);
+    cursor: pointer;
 }
 
 .post .post-user {
@@ -726,7 +737,13 @@ User Page
     .user .profile-info.user-details-show .user-info-hidden .bio {
         width: initial;
         transform: initial;
-    } 
+    }
+
+    .user .profile-info.user-details-show .user-info-hidden .friends {
+        display: block;
+        width: 594px;
+        transform: translateX(-250px);
+    }
 }
 
 @media screen and (min-width: 800px) {
@@ -746,6 +763,12 @@ User Page
 
     .user .profile-info .user-info-hidden .friends {
         display: block;
+    }
+
+    .user .profile-info.user-details-show .user-info-hidden .friends {
+        display: block;
+        width: initial;
+        transform: initial;
     }
 }
 
@@ -863,7 +886,7 @@ Message Page
 .messages-list .message .text-container {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .messages-list .message .message-text {
@@ -1027,6 +1050,7 @@ Post Page
 
 .post-page.main .post {
     border-bottom: 2px solid var(--secondary-text);
+    cursor: initial;
 }
 
 .post-page .comment-new {

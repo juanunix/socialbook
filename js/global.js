@@ -38,3 +38,13 @@ function closeProfileExpand() {
     profileIcon.addEventListener('click', openProfileExpand);
     profileExpandOverlay.removeEventListener('click', closeProfileExpand);    
 }
+
+
+function hasTouch() {
+    try {
+        document.createEvent("TouchEvent");
+        return true;
+    } catch (e) {
+        return false;
+    }    
+}

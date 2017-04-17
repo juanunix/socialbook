@@ -59,43 +59,56 @@
     </nav>
 </div>
 <div class="message main">
-    <section class="user-details">
+    <a href="user.html" class="user-details">
         <img class="avatar" src="https://api.adorable.io/avatars/48/q" alt="">
         <div class="user-info">
             <span class="user-name">Priyanshu Jindal</span>
             <span class="user-friendship">Friends since 2 years</span>
         </div>
-    </section>
+    </a>
     <section class="messages-list">
         <div class="right message">
-            <img class="avatar" src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image">
+            <img class="avatar" 
+                 src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" 
+                 alt="Profile image"
+                 onclick="window.location='user.html';"
+            >
             <div class="text-container">
                 <span class="message-text">Hi buddy</span>
                 <span class="message-time">Feb 13</span>
             </div>
         </div>
         <div class="left message">
-            <img class="avatar" src="https://api.adorable.io/avatars/48/q" alt="">
+            <img class="avatar" 
+                 src="https://api.adorable.io/avatars/48/q" 
+                 alt="Profile image"
+                 onclick="window.location='user.html';"
+            >
             <div class="text-container">
                 <span class="message-text">What's Happening?</span>
                 <span class="message-time">Feb 14</span>
             </div>
         </div>
         <div class="right message">
-            <img class="avatar" src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image">
+            <img class="avatar" 
+                 src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" 
+                 alt="Profile image"
+                 onclick="window.location='user.html';"
+            >
             <div class="text-container">            
                 <span class="message-text">Cool man</span>
                 <span class="message-time">Feb 15</span>
             </div>
         </div>
     </section>
-    <section class="message-input">
-        <input type="text" placeholder="Type a message"/>
+    <form class="message-input" action="message.html">
+        <input id="message-input-text" type="text" placeholder="Type a message"/>
         <button>
             <img src="icons/ic_send_black_36px.svg"/>
         </button>
-    </section>
+    </form>
 </div>
 <script src="js/global.js"></script>
+<script src="js/message.js"></script>
 </body>
 </html>
