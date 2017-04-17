@@ -10,4 +10,4 @@
 - [x] Messages
 - [x] Message
 - [x] Friends
-- [ ] Post
+- [x] Post
