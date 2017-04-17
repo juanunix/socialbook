@@ -361,12 +361,12 @@ body:not(.login) {
 
 .header .profile-links .profile-expandable .profile-expanded {
     position: fixed;
-    right: 0;
-    top:0;
+    right: 10px;
+    top: 8px;
     background-color: var(--primary-dark);
     z-index: 4;
     padding-bottom: 16px;
-    box-shadow: var(--elevation-4);
+    box-shadow: var(--elevation-8);
 }
 
 .header .profile-links .profile-info {
