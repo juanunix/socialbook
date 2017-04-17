@@ -393,12 +393,16 @@ body:not(.login) {
  .header .profile-links .profile-actions > a {
      height: 36px;
      padding: 0 12px;
-     border: 1px solid var(--divider-light-text);
+     border-bottom: 1px solid var(--secondary-light);
      color: var(--primary-light-text);
      display: flex;
      flex-direction: column;
      justify-content: center;
      text-decoration: none;
+ }
+
+ .header .profile-links .profile-actions:first-of-type {
+     border-top: 1px solid var(--secondary-light);
  }
 
 .header.display-profile .profile-links .profile-expandable {
