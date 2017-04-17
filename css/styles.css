@@ -4,6 +4,10 @@ body {
     --primary-light:#6ec6ff;
     --primary-dark: #0069c0;
 
+    --secondary: #64DD17;
+    --secondary-light: #9cff57;
+    --secondary-dark: #1faa00;
+
     --gray-dark: #E0E0E0;
     --gray: #F5F5F5;
     --gray-light: #FAFAFA;
@@ -225,6 +229,28 @@ body:not(.login) {
     box-shadow: var(--elevation-8);
 }
 
+.header .nav-links .nav-link {
+    display: none;
+    color: var(--primary-light-text);
+    font-size: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.header .nav-links .nav-link.active {
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--secondary);
+}
+
+@media screen and (min-width: 480px) {
+    .header .nav-links .nav-link {
+        display: inline;
+    }
+    .header .nav-links .home-icon {
+        display: none;
+    }
+}
+
 .header .right-icons {
     display: flex;
     justify-content: center;
@@ -315,6 +341,68 @@ body:not(.login) {
     .header.display-search .search-input .search-icon #search-icon-close {
         display: inline;
     }
+}
+
+.header .profile-links .profile-expandable {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+.header .profile-links .profile-expandable #profile-overlay {
+    height: 100%;
+    width: 100%;
+    z-index: 3;    
+}
+
+.header .profile-links .profile-expandable .profile-expanded {
+    position: fixed;
+    right: 0;
+    top:0;
+    background-color: var(--primary-dark);
+    z-index: 4;
+    padding-bottom: 16px;
+    box-shadow: var(--elevation-4);
+}
+
+.header .profile-links .profile-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 56px;
+    padding-right: 16px;
+}
+
+.header .profile-links .profile-info img {
+    width: 36px;
+    height: 36px;
+    margin: 0 12px;
+    border: 1px solid var(--secondary-text);
+    border-radius: 50%;
+}
+
+.header .profile-links .profile-info span {
+    font-size: 16px;
+    color: var(--primary-light-text);
+ }
+
+ .header .profile-links .profile-actions > a {
+     height: 36px;
+     padding: 0 12px;
+     border: 1px solid var(--divider-light-text);
+     color: var(--primary-light-text);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-decoration: none;
+ }
+
+.header.display-profile .profile-links .profile-expandable {
+    display: block;
 }
 
 /***********************
@@ -420,12 +508,10 @@ Home Page
     display: block;
 }
 
-.post .post-content .content-image > div {
+.post .post-content .content-image img {
     width: 100%;
     margin-bottom: 12px;
-    padding-bottom: 100%;
-    background-repeat: no-repeat;
-    background-size: 100%;
+    min-height: 60px;
 }
 /***********************
 /Home Page
