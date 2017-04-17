@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>
+        Socialbook | Post
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+</head>
+<body>
+<div class="header" id="header">
+    <nav>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link active home-link">
+                Home
+            </a>
+            <a href="messages.html" class="nav-link">
+                Messages
+            </a>
+            <a href="home.html" class="home-icon home-link logo icon">
+                <img src="https://placehold.it/50x50" alt="Socialbook logo">
+            </a>
+        </div>
+        <div class="right-icons">
+            <form class="search-input" action="search.html" method="post">
+                <input type="text" placeholder="Search" id="search-input" name="search"/>
+                <div class="search-icon icon">
+                    <img src="icons/ic_search_white_36px.svg" alt="Search icon" id="search-icon-white">
+                    <img src="icons/ic_search_black_36px.svg" alt="Search icon" id="search-icon-black">
+                    <img src="icons/ic_close_black_36px.svg" alt="Search icon" id="search-icon-close">
+                </div>
+            </form>
+            <div class="profile-links">
+                <div class="profile-icon logo icon" id="profile-icon">
+                    <img src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image">
+                </div>
+                <div class="profile-expandable">
+                    <div id="profile-overlay"></div>
+                    <div class="profile-expanded">
+                        <a href="profile.html" class="profile-info">
+                            <img class="avatar" src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image">
+                            <span>Priyanshu Jindal</span>
+                        </a>
+                        <div class="profile-actions">
+                            <a href="messages.html">Messages</a>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="friends.html">Friends</a>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="settings.html">Settings</a>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="post-page main">
+    <section class="post">
+        <div class="post-user">
+            <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.io.png" alt="User profile image">
+            <div class="user-info">
+                <span class="user-name">Priyanshu Jindal</span>
+                <span class="user-time">5 hours ago</span>
+            </div>
+        </div>
+        <div class="post-content">
+            <span class="content-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+            </span>
+            <div class="content-image">
+                <img src="http://lorempixel.com/600/600" />
+            </div>
+        </div>
+    </section>
+    <section class="comments-list"></section>
+    <section class="comment-new">
+        <input type="text" placeholder="Write a comment"/>
+        <button>
+            <img src="icons/ic_send_black_36px.svg"/>
+        </button>
+    </section>
+</div>
+<script src="js/global.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
