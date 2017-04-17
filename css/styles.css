@@ -916,6 +916,9 @@ Message Page
 /***********************
 Friends Page
 ************************/
+.friends.main {
+    box-shadow: var(--elevation-2);
+}
 .friends .user-info {
     height: 64px;
     background-color: var(--primary-light-text);

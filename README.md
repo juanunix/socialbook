@@ -9,5 +9,5 @@
 - [ ] Profile Edit
 - [x] Messages
 - [x] Message
-- [ ] Friends
+- [x] Friends
 - [ ] Post
