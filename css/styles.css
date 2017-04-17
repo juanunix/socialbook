@@ -550,6 +550,7 @@ User Page
     justify-content: space-between;
     align-items: center;
     background-color: var(--disabled-light-text);
+    
 }
 
 .user .profile-info .user-info .user-details{
@@ -637,19 +638,124 @@ User Page
     border: 1px solid var(--primary-text);
 }
 
-@media screen and (min-width: 480px) {
+
+.user .profile-info .user-actions-hidden {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 12px;
+    background-color: var(--primary-light-text);
+    border: 1px solid var(--divider);
+}
+
+.user .profile-info .user-actions-hidden button {
+    margin: 0 10px;
+}
+
+@media screen and (min-width: 400px) {
     .user .profile-info {
         flex-direction: row;
+        width:400px;
+        margin: 0 auto 20px;
     }
 
-    .user .profile-info .pic img{
+    .user .profile-info .pic{
         margin-bottom: 0;
+        width: 114px;
+    }
+
+    .user .profile-info .user-info {
+        background-color: var(--primary-light-text);
+    }
+
+    .user .profile-info .user-info .user-actions {
+        display: none;
+    }
+
+    .user .user-container {
+        width: 286px;
+    }
+    .user .profile-info .user-info-hidden {
+        margin-bottom: 0;
+        width: 400px;
+        transform: translateX(-114px);
+    }
+}
+
+
+@media screen and (min-width: 520px) {
+    .user .profile-info {
+        width: 500px;
+    }
+    .user .profile-info .pic{
+        width: 190px;
+    }
+
+    .user .user-container {
+        width: 310px;
     }
 
     .user .profile-info .user-info-hidden {
         display: block;
+        width: initial;
+        transform: initial;
     }
-} 
+
+    .user .profile-info .user-info-hidden .bio,
+    .user .profile-info .user-info-hidden .friends {
+        display: none;
+    }
+    
+    .user .profile-info.user-details-show .user-info-hidden .bio,
+    .user .profile-info.user-details-show .user-info-hidden .friends {
+        display: block;
+        width: 474px;
+        transform: translateX(-190px);
+    }
+    
+}
+
+@media screen and (min-width: 640px) {
+    .user .profile-info {
+        width: 620px;
+    }
+    .user .profile-info .pic{
+        width: 250px;
+    }
+
+    .user .user-container {
+        width: 370px;
+    }
+
+    .user .profile-info .user-info-hidden .bio {
+        display: block;
+    }
+
+    .user .profile-info.user-details-show .user-info-hidden .bio {
+        width: initial;
+        transform: initial;
+    } 
+}
+
+@media screen and (min-width: 800px) {
+    .user.main {
+        min-width: 780px;
+    }
+    .user .profile-info {
+        width: 780px;
+    }
+    .user .profile-info .pic{
+        width: 332px;
+    }
+
+    .user .user-container {
+        width: 448px;
+    }
+
+    .user .profile-info .user-info-hidden .friends {
+        display: block;
+    }
+}
 
 
 /***********************
