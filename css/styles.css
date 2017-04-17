@@ -120,6 +120,14 @@ a:hover {
     color: var(--primary);
 }
 
+.avatar {
+    width: 36px;
+    height: 36px;
+    margin: 0 12px;
+    border: 1px solid var(--secondary-text);
+    border-radius: 50%;
+}
+
 /***********************
 /Global
 ************************/
@@ -377,14 +385,6 @@ body:not(.login) {
     padding-right: 16px;
 }
 
-.header .profile-links .profile-info img {
-    width: 36px;
-    height: 36px;
-    margin: 0 12px;
-    border: 1px solid var(--secondary-text);
-    border-radius: 50%;
-}
-
 .header .profile-links .profile-info span {
     font-size: 16px;
     color: var(--primary-light-text);
@@ -472,14 +472,6 @@ Home Page
     justify-content: flex-start;
     align-items: center;
     height: 56px;
-}
-
-.post .post-user img {
-    width: 36px;
-    height: 36px;
-    margin: 0 12px;
-    border: 1px solid var(--secondary-text);
-    border-radius: 50%;
 }
 
 .post .post-user .user-info {
@@ -632,10 +624,6 @@ User Page
 
 .user .profile-info .user-info-hidden .friends-list .friends-images img {
     margin: 0 4px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--primary-text);
 }
 
 
@@ -760,4 +748,58 @@ User Page
 
 /***********************
 /User Page
+************************/
+
+
+/***********************
+Messages Page
+************************/
+
+.messages .receipents-search input {
+    margin-bottom: 0;
+    font-size: 16px;
+    padding: 12px 10px;
+}
+
+.messages .receipents-item {
+    background-color: var(--primary-light-text);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid var(--divider);
+}
+
+.messages .receipents-item .receipents-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+}
+
+.messages .receipents-header .user-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.messages .receipents-header .user-info span {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-text);
+}
+
+.messages .receipents-header .user-time {
+    margin-right: 12px;
+    color: var(--secondary-text);
+}
+
+.messages .receipents-body {
+    padding: 4px 12px 12px;
+    font-size: 18px;
+    color: var(--secondary-text);
+}
+
+
+/***********************
+/Messages Page
 ************************/
