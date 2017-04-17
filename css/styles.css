@@ -516,3 +516,142 @@ Home Page
 /***********************
 /Home Page
 ************************/
+
+/***********************
+User Page
+************************/
+.user .profile-info .pic img{
+    width: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-bottom: -56px;
+}
+
+.user .profile-info .user-info-container {
+    height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user .profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user .profile-info .user-info {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--disabled-light-text);
+}
+
+.user .profile-info .user-info .user-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12px;
+}
+
+.user .user-info .user-details .user-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-text);
+}
+
+.user .user-info .user-details .user-friendship {
+    font-size: 14px;
+    color: var(--secondary-text);
+}
+
+.user .profile-info .user-info .user-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.user .profile-info .user-info .user-actions button {
+    min-width: 0;
+    margin:0 10px;
+}
+.user .profile-info .user-info .user-actions button img{
+    width: 24px;
+    height: 24px;
+}
+
+.user .profile-info .user-info-hidden {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.user .profile-info.user-details-show .user-info-hidden {
+    display: block;
+}
+
+.user .profile-info .user-info-hidden .info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px;
+    background-color: var(--primary-light-text);
+    border: 1px solid var(--divider);
+}
+
+.user .profile-info .user-info-hidden .info p {
+    margin: 0;
+}
+
+.user .profile-info .user-info-hidden .info .field {
+    font-size: 16px;
+    color: var(--primary-text);
+    margin-bottom: 4px;
+}
+
+.user .profile-info .user-info-hidden .info .value {
+    font-size: 14px;
+    color: var(--secondary-text);
+}
+
+.user .profile-info .user-info-hidden .friends-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user .profile-info .user-info-hidden .friends-list .friends-images {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.user .profile-info .user-info-hidden .friends-list .friends-images img {
+    margin: 0 4px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-text);
+}
+
+@media screen and (min-width: 480px) {
+    .user .profile-info {
+        flex-direction: row;
+    }
+
+    .user .profile-info .pic img{
+        margin-bottom: 0;
+    }
+
+    .user .profile-info .user-info-hidden {
+        display: block;
+    }
+} 
+
+
+/***********************
+/User Page
+************************/
