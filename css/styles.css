@@ -974,3 +974,8 @@ Friends Page
     min-width: 48px;
     margin: 0 8px;
 }
+
+.friends .friend-item .friend-actions button img{
+    width: 24px;
+    height: 24px;
+}
