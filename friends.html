@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>
+        Socialbook | Messages
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+</head>
+<body>
+<div class="header" id="header">
+    <nav>
+        <div class="nav-links">
+            <a href="home.html" class="nav-link home-link">
+                Home
+            </a>
+            <a href="messages.html" class="nav-link active">
+                Messages
+            </a>
+            <a href="home.html" class="home-icon home-link logo icon">
+                <img src="https://placehold.it/50x50" alt="Socialbook logo">
+            </a>
+        </div>
+        <div class="right-icons">
+            <form class="search-input" action="search.html" method="post">
+                <input type="text" placeholder="Search" id="search-input" name="search"/>
+                <div class="search-icon icon">
+                    <img src="icons/ic_search_white_36px.svg" alt="Search icon" id="search-icon-white">
+                    <img src="icons/ic_search_black_36px.svg" alt="Search icon" id="search-icon-black">
+                    <img src="icons/ic_close_black_36px.svg" alt="Search icon" id="search-icon-close">
+                </div>
+            </form>
+            <div class="profile-links">
+                <div class="profile-icon logo icon" id="profile-icon">
+                    <img src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image">
+                </div>
+                <div class="profile-expandable">
+                    <div id="profile-overlay"></div>
+                    <div class="profile-expanded">
+                        <a href="profile.html" class="profile-info">
+                            <img class="avatar" src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image">
+                            <span>Priyanshu Jindal</span>
+                        </a>
+                        <div class="profile-actions">
+                            <a href="messages.html">Messages</a>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="friends.html">Friends</a>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="settings.html">Settings</a>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="friends main">
+    <section class="user-info">
+        <span class="user-name">Priyanshu Jindal</span>
+        <span class="user-friends-key">Friends List</span>
+    </section>
+    <section class="friends-list">
+        <div class="friend-item">
+            <div class="friend-info">
+                <img class="avatar" src="https://api.adorable.io/avatars/48/w" alt="">
+                <span class="user-name">Random Person 1</span>
+            </div>
+            <div class="friend-actions">
+                <button>
+                    <img src="icons/ic_message_white_36px.svg" />
+                </button>
+                <button>
+                    <img src="icons/ic_add_white_36px.svg" />
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="js/global.js"></script>
+</body>
+</html>

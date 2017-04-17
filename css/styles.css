@@ -912,3 +912,65 @@ Message Page
 /***********************
 /Message Page
 ************************/
+
+/***********************
+Friends Page
+************************/
+.friends .user-info {
+    height: 64px;
+    background-color: var(--primary-light-text);
+    border-bottom: 1px solid var(--secondary-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16px;
+}
+
+.friends .user-info .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-text);
+}
+
+.friends .user-info .user-friends-key {
+    font-size: 16px;
+    color: var(--secondary-text);
+}
+
+.friends .friends-list .friend-item {
+    height: 48px;
+    background-color: var(--primary-light-text);
+    border-bottom: 1px solid var(--divider);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.friends .friend-item .friend-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.friends .friend-item .friend-info .avatar {
+    width: 24px;
+    height: 24px;
+}
+
+.friends .friend-item .friend-info .user-name {
+    color: var(--primary-text);
+}
+
+.friends .friend-item .friend-actions {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.friends .friend-item .friend-actions button {
+    min-width: 48px;
+    margin: 0 8px;
+}
