@@ -1,0 +1,13 @@
+### TODO Styling:
+- [x] Home
+- [x] Login
+- [x] Register
+- [ ] Forgot
+- [ ] Recover
+- [x] User
+- [ ] Settings
+- [ ] Profile Edit
+- [x] Messages
+- [x] Message
+- [ ] Friends
+- [ ] Post
