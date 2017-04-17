@@ -799,7 +799,112 @@ Messages Page
     color: var(--secondary-text);
 }
 
-
 /***********************
 /Messages Page
+************************/
+
+
+/***********************
+Message Page
+************************/
+
+.message.main {
+    max-width: initial;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.message .user-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 64px;
+    flex-direction: row;
+    background-color: var(--primary-light-text);
+    border-bottom: 2px solid var(--primary-text);
+}
+
+.message .user-details .avatar {
+    height: 48px;
+    width: 48px;
+}
+
+
+.message .user-details .user-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.message .user-details .user-name {
+    font-size: 18px;
+    color: var(--primary-text);
+    font-weight: bold;
+}
+.message .user-details .user-friendship {
+    font-size: 16px;
+    color: var(--secondary-text);
+}
+
+.message .messages-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    padding-bottom: 12px;
+    overflow-y: auto;
+}
+
+.messages-list .message .text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-list .message .message-text {
+    background-color: var(--white);
+    border: 1px solid var(--primary-text);
+    padding: 8px 12px;
+}
+.messages-list .message .message-time {
+    font-size: 14px;
+    color: var(--secondary-text);
+    margin-top: 4px;
+}
+
+.messages-list .message.left {
+    align-self: flex-start;
+}
+.messages-list .message.right {
+    align-self: flex-end;
+}
+
+.messages-list .message.left .avatar {
+    float: left;
+}
+.messages-list .message.right .avatar {
+    float: right;
+}
+
+.message .message-input {
+    display: flex;
+    height: 56px;
+    border-top: 2px solid var(--primary-text);
+    width: 100%;
+}
+
+.message .message-input input{
+    height: 100%;
+    border: none;
+    margin-bottom: 0;
+}
+
+.message .message-input button {
+    min-width: 56px;
+    height: 100%;
+}
+
+/***********************
+/Message Page
 ************************/
