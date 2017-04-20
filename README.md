@@ -11,5 +11,5 @@
 - [x] Message
 - [x] Friends
 - [x] Post
-- [ ] Search
+- [x] Search
 - [x] Verify

@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>
-        Socialbook | Post
+        Socialbook | Search Results
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css" type="text/css"/>
@@ -22,7 +22,7 @@
         </div>
         <div class="right-icons">
             <form class="search-input" action="search.html" method="get">
-                <input type="text" placeholder="Search" id="search-input" name="search"/>
+                <input type="text" placeholder="Search" id="search-input" name="search" value="random"/>
                 <div class="search-icon icon">
                     <img src="icons/ic_search_white_36px.svg" alt="Search icon" id="search-icon-white">
                     <img src="icons/ic_search_black_36px.svg" alt="Search icon" id="search-icon-black">
@@ -58,52 +58,52 @@
         </div>
     </nav>
 </div>
-<div class="post-page main">
-    <section class="post">
-        <div class="post-user">
-            <a href="user.html">
-                <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.io.png" alt="User profile image">
-            </a>
-            <div class="user-info">
-                <a href="user.html" class="user-name">Priyanshu Jindal</a>
-                <span class="user-time">5 hours ago</span>
+<div class="friends main">
+    <section class="friends-list">
+        <div class="friend-item">
+            <div class="friend-info">
+                <img class="avatar" src="https://api.adorable.io/avatars/48/q" alt="">
+                <span class="user-name">Random Person 1</span>
+            </div>
+            <div class="friend-actions">
+                <button>
+                    <img src="icons/ic_message_white_36px.svg" />
+                </button>
+                <button>
+                    <img src="icons/ic_add_white_36px.svg" />
+                </button>
             </div>
         </div>
-        <div class="post-content">
-            <span class="content-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            </span>
-            <div class="content-image">
-                <img src="http://lorempixel.com/600/600" />
+        <div class="friend-item">
+            <div class="friend-info">
+                <img class="avatar" src="https://api.adorable.io/avatars/48/w" alt="">
+                <span class="user-name">Random Person 2</span>
+            </div>
+            <div class="friend-actions">
+                <button>
+                    <img src="icons/ic_message_white_36px.svg" />
+                </button>
+                <button>
+                    <img src="icons/ic_add_white_36px.svg" />
+                </button>
             </div>
         </div>
-    </section>
-    <section class="comments-list">
-        <div class="comment-item post">
-            <div class="post-user">
-                <a href="user.html">
-                    <img class="avatar" src="https://api.adorable.io/avatars/48/abott@adorable.io.png" alt="User profile image">
-                </a>
-                <div class="user-info">
-                    <a href="user.html" class="user-name">Priyanshu Jindal</a>
-                    <span class="user-time">Commented 4 hours ago</span>
-                </div>
+        <div class="friend-item">
+            <div class="friend-info">
+                <img class="avatar" src="https://api.adorable.io/avatars/48/e" alt="">
+                <span class="user-name">Random Person 3</span>
             </div>
-            <div class="post-content">
-                <span class="content-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                </span>
+            <div class="friend-actions">
+                <button>
+                    <img src="icons/ic_message_white_36px.svg" />
+                </button>
+                <button>
+                    <img src="icons/ic_add_white_36px.svg" />
+                </button>
             </div>
         </div>
-    </section>
-    <section class="comment-new">
-        <input id="comment-input-text" type="text" placeholder="Write a comment"/>
-        <button>
-            <img src="icons/ic_comment_white_36px.svg"/>
-        </button>
     </section>
 </div>
 <script src="js/global.js"></script>
-<script src="js/post.js"></script>
 </body>
 </html>

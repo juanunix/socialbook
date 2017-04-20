@@ -189,6 +189,11 @@ Login Page
     text-align: center;
 }
 
+.login .forgot-link {
+    text-align: left;
+    margin-top: 12px;
+}
+
 /***********************
 /Login Page
 ************************/
