@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>
+        Socialbook | Verify
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+</head>
+<body class="login">
+<div class="container">
+    <div class="heading">
+        <h2>Congratulations!</h2>
+    </div>
+    <div class="verified">
+        <p>Your account is succesfully verified</p> 
+        <p>You will be redirected to home in <span id="timer"></span> seconds</p> 
+    </div>
+</div>
+</body>
+<script>
+var timer = document.getElementById('timer');
+var time = 5;
+timer.innerHTML = time;
+var timerInterval = setInterval(function() {
+    timer.innerHTML = --time;
+    if (time === 0) {
+        window.location = 'home.html'
+        clearInterval(timerInterval);
+        return;
+    }
+}, 1000);
+</script>
+</html>

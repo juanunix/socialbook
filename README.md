@@ -2,8 +2,8 @@
 - [x] Home
 - [x] Login
 - [x] Register
-- [ ] Forgot
-- [ ] Recover
+- [x] Forgot
+- [x] Recover
 - [x] User
 - [ ] Settings
 - [ ] Profile Edit
@@ -11,3 +11,5 @@
 - [x] Message
 - [x] Friends
 - [x] Post
+- [ ] Search
+- [x] Verify
