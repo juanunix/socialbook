@@ -59,7 +59,22 @@
     </nav>
 </div>
 <div class="settings main">
-    
+    <form action="settings.html" class="profile-edit">
+        <div class="field">
+            <span class="key">Name</span>
+            <input type="text" name="name" placeholder="Enter your name" value="Priyanshu Jindal"/>
+        </div>
+        <div class="field">
+            <span class="key">Bio</span>
+            <input type="text" name="bio" placeholder="Enter a bio" value="This is just something about myself"/>
+        </div>
+        <div class="field">
+            <button>Save</button>
+        </div>
+    </form>
+    <div class="field">
+        <button onclick="window.location='recover.html'">Change Password</button>
+    </div>
 </div>
 <script src="js/global.js"></script>
 </body>

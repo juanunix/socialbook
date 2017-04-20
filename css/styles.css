@@ -1096,3 +1096,20 @@ Verification Page
 /***********************
 /Verification Page
 ************************/
+
+
+/***********************
+Settings Page
+************************/
+
+.settings {
+    max-width: 400px;    
+}
+
+.settings .profile-edit {
+    margin: 12px auto;
+}
+
+/***********************
+/Settings Page
+************************/
