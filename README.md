@@ -5,8 +5,7 @@
 - [x] Forgot
 - [x] Recover
 - [x] User
-- [ ] Settings
-- [ ] Profile Edit
+- [x] Settings
 - [x] Messages
 - [x] Message
 - [x] Friends
