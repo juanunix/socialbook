@@ -375,7 +375,7 @@ body:not(.login) {
 .header .profile-links .profile-expandable #profile-overlay {
     height: 100%;
     width: 100%;
-    z-index: 3;    
+    z-index: 3;
 }
 
 .header .profile-links .profile-expandable .profile-expanded {
@@ -516,7 +516,7 @@ Home Page
 .post .post-content .content-text {
     font-size: 14px;
     color: var(--primary-text);
-    margin-bottom: 12px; 
+    margin-bottom: 12px;
     display: block;
 }
 
@@ -562,7 +562,7 @@ User Page
     justify-content: space-between;
     align-items: center;
     background-color: var(--disabled-light-text);
-    
+
 }
 
 .user .profile-info .user-info .user-details{
@@ -713,14 +713,14 @@ User Page
     .user .profile-info .user-info-hidden .friends {
         display: none;
     }
-    
+
     .user .profile-info.user-details-show .user-info-hidden .bio,
     .user .profile-info.user-details-show .user-info-hidden .friends {
         display: block;
         width: 474px;
         transform: translateX(-190px);
     }
-    
+
 }
 
 @media screen and (min-width: 640px) {
@@ -903,13 +903,13 @@ Message Page
 
 @media screen and (min-width: 480px) {
     .messages-list .message .message-text {
-        max-width: 300px;   
+        max-width: 300px;
     }
 }
 
 @media screen and (min-width: 640px) {
     .messages-list .message .message-text {
-        max-width: 400px;   
+        max-width: 400px;
     }
 }
 
@@ -1103,7 +1103,8 @@ Settings Page
 ************************/
 
 .settings {
-    max-width: 400px;    
+    max-width: 400px;
+    padding: 0 12px;
 }
 
 .settings .profile-edit {
