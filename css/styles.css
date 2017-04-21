@@ -1104,11 +1104,18 @@ Settings Page
 
 .settings {
     max-width: 400px;
-    padding: 0 12px;
+    padding: 0 12px 12px;
 }
 
 .settings .profile-edit {
     margin: 12px auto;
+}
+
+.settings .avatar-field img {
+  width: 100%;
+}
+.settings .avatar-field button {
+  margin: 12px 0;
 }
 
 /***********************
