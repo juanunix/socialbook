@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Login = () => (
+const Forgot = () => (
     <html>
     <head>
         <title>
-            Socialbook | Login
+            Socialbook | Forgot
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="css/styles.css" type="text/css"/>
@@ -12,37 +12,28 @@ const Login = () => (
     <body className="login">
     <div className="container">
         <div className="heading">
-            <h2>Socialbook</h2>
+            <h2>Forgot Password</h2>
         </div>
-        <form className="signin" method="get" action="home.html">
+        <form className="signin" method="get" action="forgot.html">
             <div className="input">
                 <input id="username"
                     type="text"
-                    placeholder="Username"
+                    placeholder="Username or Email address"
                     name="username"/>
             </div>
-            <div className="input">
-                <input id="password"
-                    type="password"
-                    placeholder="Password"
-                    name="password"/>
-            </div>
             <div className="button">
-                <button>Sign In</button>
-            </div>
-            <div className="forgot-link">
-                <a href="forgot.html">Forgot password?</a>
+                <button onclick="alert('Please check your email')">Send me a mail</button>
             </div>
         </form>
         <div className="or">
             <span>or</span>
         </div>
         <div className="signup-link">
-            <a href="register.html">Click here to register</a>
+            <a href="login.html">Click here to login</a>
         </div>
     </div>
     </body>
     </html>
 );
 
-export default Login;
+export default Forgot;

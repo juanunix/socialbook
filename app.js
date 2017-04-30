@@ -15,6 +15,18 @@ app.get('/login', (req, res) => {
   res.render('login');
 })
 
+app.get('/home', (req, res) => {
+  res.render('home');
+})
+
+app.get('/friends', (req, res) => {
+  res.render('friends');
+})
+
+app.get('/forgot', (req, res) => {
+  res.render('forgot');
+})
+
 app.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
 })
