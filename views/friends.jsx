@@ -3,25 +3,7 @@ import Layout from './partials/layout';
 import Navbar from './partials/navbar';
 import Friend from './partials/friend';
 
-const friends = [
-  {
-    id: 1,
-    avatar: 'https://api.adorable.io/avatars/48/q',
-    name: 'Random Person 1'
-  },
-  {
-    id: 2,
-    avatar: 'https://api.adorable.io/avatars/48/w',
-    name: 'Random Person 2'
-  },
-  {
-    id: 3,
-    avatar: 'https://api.adorable.io/avatars/48/e',
-    name: 'Random Person 3'
-  },
-]
-
-const Friends = () => (
+const Friends = ({ friends }) => (
   <Layout title="Friends" className="friends">
     <Navbar />
     <div className="friends main">

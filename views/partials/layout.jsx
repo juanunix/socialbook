@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Layout = ({children, title, className}) => (
-    <html>
+const Layout = ({children, title, className, scripts}) => (
+  <html>
     <head>
       <title>
           Socialbook | {title}
@@ -11,10 +11,15 @@ const Layout = ({children, title, className}) => (
     </head>
     <body className={className}>
       {children}
-    <script src="js/global.js"></script>
-    <script src="js/home.js"></script>
+      {scripts &&
+        <script src="js/global.js"></script>
+      }
     </body>
-    </html>
+  </html>
 );
+
+Layout.defaultProps = {
+  scripts: true,
+}
 
 export default Layout;
