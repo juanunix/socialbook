@@ -8,10 +8,10 @@ const Friend = ({ friend }) => (
     </div>
     <div className="friend-actions">
       <button>
-        <img src="icons/ic_message_white_36px.svg" />
+        <img src="/icons/ic_message_white_36px.svg" />
       </button>
       <button>
-        <img src="icons/ic_add_white_36px.svg" />
+        <img src="/icons/ic_add_white_36px.svg" />
       </button>
     </div>
   </div>

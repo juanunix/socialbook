@@ -18,9 +18,9 @@ const Navbar = () => (
         <form className="search-input" action="search.html" method="get">
           <input type="text" placeholder="Search" id="search-input" name="search"/>
           <div className="search-icon icon">
-            <img src="icons/ic_search_white_36px.svg" alt="Search icon" id="search-icon-white" />
-            <img src="icons/ic_search_black_36px.svg" alt="Search icon" id="search-icon-black" />
-            <img src="icons/ic_close_black_36px.svg" alt="Search icon" id="search-icon-close" />
+            <img src="/icons/ic_search_white_36px.svg" alt="Search icon" id="search-icon-white" />
+            <img src="/icons/ic_search_black_36px.svg" alt="Search icon" id="search-icon-black" />
+            <img src="/icons/ic_close_black_36px.svg" alt="Search icon" id="search-icon-close" />
           </div>
         </form>
         <div className="profile-links">

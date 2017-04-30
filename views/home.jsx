@@ -25,7 +25,7 @@ const Home = ({ posts }) => (
         ))}
       </section>
     </div>
-    <script src="js/home.js"></script>
+    <script src="/js/home.js"></script>
   </Layout>
 );
 
