@@ -28,6 +28,8 @@ app.get('/', homeController.index);
 
 app.get('/user/:id', userController.getUser);
 app.get('/user/:id/friends', userController.getFriends);
+app.get('/users', userController.getSearchResults);
+app.get('/users/:query', userController.getSearchResults);
 
 app.get('/messages/:id', messageController.getUserChat);
 app.get('/messages', messageController.getMessagesList);

@@ -28,6 +28,15 @@ exports.getUser = (req, res) => {
  * GET /user/:id/friends
  * Home page.
  */
- exports.getFriends = (req, res) => {
-   res.render('friends', { friends });
- }
+exports.getFriends = (req, res) => {
+ res.render('friends', { friends });
+}
+
+/**
+ * GET /users
+ * GET /users/:query
+ * Home page.
+ */
+exports.getSearchResults = (req, res) => {
+  res.render('search', {results: friends});
+}

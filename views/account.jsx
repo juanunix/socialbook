@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './partials/layout';
 import Navbar from './partials/navbar';
 
-const Settings = () => (
+const Account = () => (
   <Layout title="Account Settings">
     <Navbar />
     <div className="settings main">
@@ -34,4 +34,4 @@ const Settings = () => (
   </Layout>
 );
 
-export default Settings;
+export default Account;
