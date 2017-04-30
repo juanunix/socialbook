@@ -2,8 +2,8 @@ import React from 'react';
 import Layout from './partials/layout';
 import Navbar from './partials/navbar';
 
-const Message = () => (
-  <Layout title="Messages">
+const Chat = () => (
+  <Layout title="Chat">
     <Navbar />
     <div className="message main">
       <a href="user.html" className="user-details">
@@ -51,7 +51,7 @@ const Message = () => (
       <form className="message-input" action="message.html">
         <input id="message-input-text" type="text" placeholder="Type a message"/>
         <button>
-          <img src="icons/ic_send_black_36px.svg"/>
+          <img src="/icons/ic_send_black_36px.svg"/>
         </button>
       </form>
     </div>
@@ -59,4 +59,4 @@ const Message = () => (
   </Layout>
 );
 
-export default Message;
+export default Chat;

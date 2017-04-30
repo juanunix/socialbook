@@ -1,5 +1,7 @@
 var commentInput = document.getElementById('comment-input-text');
 
-if (!hasTouch()) {
-    commentInput.focus();
+window.onready = function() {
+  if (!hasTouch()) {
+      commentInput.focus();
+  }
 }

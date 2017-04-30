@@ -1,5 +1,7 @@
 var messageInput = document.getElementById('message-input-text');
 
-if (!hasTouch()) {
-    messageInput.focus();
+window.onready = function() {
+  if (!hasTouch()) {
+      messageInput.focus();
+  }
 }

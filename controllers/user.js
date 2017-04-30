@@ -15,11 +15,19 @@ const friends = [
     name: 'Random Person 3'
   },
 ]
+
+/**
+ * GET /user/:id
+ * Home page.
+ */
+exports.getUser = (req, res) => {
+  res.render('user')
+}
+
 /**
  * GET /user/:id/friends
  * Home page.
  */
-
  exports.getFriends = (req, res) => {
    res.render('friends', { friends });
  }

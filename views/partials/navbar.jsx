@@ -4,13 +4,13 @@ const Navbar = () => (
   <div className="header" id="header">
     <nav>
       <div className="nav-links">
-        <a href="home" className="nav-link active home-link">
+        <a href="/" className="nav-link active home-link">
           Home
         </a>
-        <a href="messages.html" className="nav-link">
+        <a href="/messages" className="nav-link">
           Messages
         </a>
-        <a href="home.html" className="home-icon home-link logo icon">
+        <a href="/" className="home-icon home-link logo icon">
           <img src="https://placeholdit.imgix.net/~text?txtsize=6&txt=50%C3%9750&w=50&h=50" alt="Socialbook logo" />
         </a>
       </div>
@@ -36,7 +36,7 @@ const Navbar = () => (
               </a>
               {['Messages', 'Friends', 'Settings', 'Logout'].map(link => (
                 <div key={link} className="profile-actions">
-                  <a href={link.toLowerCase()}>
+                  <a href={'/' + link.toLowerCase()}>
                     {link}
                   </a>
                 </div>
