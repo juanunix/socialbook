@@ -25,7 +25,7 @@ const Login = ({ error }) => (
             placeholder="Password"
             name="password"/>
         </div>
-        <div className="button">
+        <div>
           <button>Sign In</button>
         </div>
         <div className="forgot-link">

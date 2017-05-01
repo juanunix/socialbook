@@ -30,7 +30,7 @@ const ResetPassword = () => (
           placeholder="Choose a Password"
           name="password"/>
         </div>
-        <div className="button">
+        <div>
           <button>Save Password</button>
         </div>
       </form>

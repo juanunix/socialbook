@@ -14,7 +14,7 @@ const Forgot = () => (
                 placeholder="Username or Email address"
                 name="username"/>
         </div>
-        <div className="button">
+        <div>
           <button onclick="alert('Please check your email')">Send me a mail</button>
         </div>
       </form>

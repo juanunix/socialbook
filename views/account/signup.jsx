@@ -32,7 +32,7 @@ const Signup = () => (
           placeholder="Choose a Password"
           name="password"/>
         </div>
-        <div className="button">
+        <div>
           <button>Sign Up</button>
         </div>
       </form>
