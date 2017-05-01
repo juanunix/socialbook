@@ -1,3 +1,5 @@
+const userQueries = require('../models/user');
+const userTokenQueries = require('../models/user_token');
 /**
  * GET /login
  * Login page.
@@ -10,22 +12,36 @@ exports.getLogin = (req, res) => {
  * POST /login
  * Sign in using username, password.
  */
-exports.postLogin = (req, res) => {
-  let errorMessage;
-  let errorCode;
+exports.postLogin = async (req, res, next) => {
   if (!req.body) {
-    errorMessage = 'Server Error';
-    errorCode = 401;
+    return next({
+      code: 401,
+      message: 'Server Error',
+      path: 'account/login'
+    })
   }
   const { username, password } = req.body;
   if(!username || !password) {
-    errorCode = 401;
-    errorMessage = 'Username and password are required';
+    return next({
+      code: 401,
+      message: 'Username and password are required',
+      path: 'account/login'
+    })
   }
-  console.log(username, password);
-  if (errorCode && errorMessage) {
-    res.status(errorCode).render('account/login', { errorMessage })
+  try {
+    const id = await userQueries.login(username, password);
+    const { token, secret } = await userTokenQueries.newToken(id);
+    res.cookie('token', token, { signed: true });
+    res.cookie('secret', secret, { signed: true });
+    res.redirect('/');
+  } catch (e) {
+    return next({
+      code: 403,
+      message: 'Invalid Username or password',
+      path: 'account/login'
+    })
   }
+  next();
 }
 
 /**
@@ -59,4 +75,14 @@ exports.getForgot = (req, res) => {
  */
 exports.getReset = (req,res) => {
   res.render('account/reset');
+}
+
+/**
+ * GET /signout
+ * Signout page.
+ */
+exports.getSignout = (req, res) => {
+  res.clearCookie('token');
+  res.clearCookie('secret');
+  res.redirect('/');
 }

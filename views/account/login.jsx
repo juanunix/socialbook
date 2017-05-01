@@ -1,15 +1,15 @@
 import React from 'react';
 import Layout from '../partials/layout';
 
-const Login = ({ errorMessage }) => (
+const Login = ({ error }) => (
   <Layout title="Login" className="login" scripts={false}>
     <div className="container">
       <div className="heading">
         <h2>Socialbook</h2>
       </div>
-      {errorMessage &&
+      {error &&
         <div className="error-message">
-          {errorMessage}
+          {error}
         </div>
       }
       <form className="signin" method="post" action="/login">
