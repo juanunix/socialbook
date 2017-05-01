@@ -40,5 +40,26 @@ const posts = [
  * Home page.
  */
 exports.index = (req, res) => {
-  res.render('home', { posts });
+  if(req.user) {
+    res.render('home', { posts });
+  } else {
+    res.render('account/login');
+  }
 };
+
+
+/**
+ * GET /requests
+ * Reset Token page.
+ */
+exports.getFriendRequests = (req, res) => {
+  res.render('requests', {
+    friends: [
+      {
+        id: 1,
+        avatar: 'https://api.adorable.io/avatars/48/q',
+        name: 'Random Person 1'
+      }
+    ]
+  });
+}

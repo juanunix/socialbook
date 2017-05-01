@@ -1,13 +1,18 @@
 import React from 'react';
 import Layout from '../partials/layout';
 
-const Login = () => (
+const Login = ({ errorMessage }) => (
   <Layout title="Login" className="login" scripts={false}>
     <div className="container">
       <div className="heading">
         <h2>Socialbook</h2>
       </div>
-      <form className="signin" method="get" action="home.html">
+      {errorMessage &&
+        <div className="error-message">
+          {errorMessage}
+        </div>
+      }
+      <form className="signin" method="post" action="/login">
         <div className="input">
           <input id="username"
             type="text"

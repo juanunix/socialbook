@@ -34,7 +34,7 @@ const Navbar = () => (
                 <img className="avatar" src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image" />
                 <span>Priyanshu Jindal</span>
               </a>
-              {['Messages', 'Friends', 'Settings', 'Logout'].map(link => (
+              {['Messages', 'Friends', 'Settings', 'Logout', 'Requests'].map(link => (
                 <div key={link} className="profile-actions">
                   <a href={'/' + link.toLowerCase()}>
                     {link}

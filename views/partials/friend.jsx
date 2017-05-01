@@ -10,9 +10,11 @@ const Friend = ({ friend }) => (
       <button>
         <img src="/icons/ic_message_white_36px.svg" />
       </button>
-      <button>
-        <img src="/icons/ic_add_white_36px.svg" />
-      </button>
+      <form method="post" action="/user/1/friends/2">
+        <button>
+          <img src="/icons/ic_add_white_36px.svg" />
+        </button>
+      </form>
     </div>
   </div>
 );

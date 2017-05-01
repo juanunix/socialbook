@@ -173,6 +173,12 @@ Login Page
     font-weight: 500;
 }
 
+.login .error-message {
+  font-size: 16px;
+  text-align: center;
+  padding: 12px;
+}
+
 .login .signin {
     margin:0 auto 20px;
     max-width: 320px;
