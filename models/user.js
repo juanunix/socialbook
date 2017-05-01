@@ -11,9 +11,9 @@ exports.dropTable = `
 exports.createTable = `
   CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
     id SERIAL NOT NULL,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
     avatar_id INT,
     verify_code VARCHAR(32),
@@ -139,11 +139,9 @@ exports.uploadAvatar = async (id, content) => {
   return await db.query(
     `
       UPDATE ${TABLE_NAME}
-      set avatar_id=?
-      WHERE id=?
-      LIMIT 1
+      set avatar_id=$1
+      WHERE id=$2
     `,
     [avatar_id, id]
   );
-  return avatar_id;
 }

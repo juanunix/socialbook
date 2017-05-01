@@ -1,5 +1,4 @@
 const pg = require('pg');
-// const Promise = require('bluebird');
 
 const config = process.env.DATABASE_URL || {
   host     : 'localhost',

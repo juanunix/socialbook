@@ -4,6 +4,8 @@ const fileQueries = require('./file');
 const userQueries = require('./user');
 const userTokenQueries = require('./user_token');
 const postQueries = require('./post');
+const commentQueries = require('./comment');
+const friendQueries = require('./friend');
 const initDatabase = require('./init');
 
 async function testDatabase() {
@@ -13,6 +15,8 @@ async function testDatabase() {
     await userTokenDatabase();
     await fileDatabase();
     await postDatabase();
+    await commentDatabase();
+    await friendDatabase();
     process.exit();
   } catch(e) {
     console.error(e);
@@ -24,6 +28,12 @@ async function userDatabase() {
     'priyanshujindal1995@gmail.com',
     'Priyanshu Jindal',
     'prijindal',
+    '123456'
+  )
+  await userQueries.signup(
+    'priyanshu.jindal2014@vit.ac.in',
+    'Priyanshu College',
+    'priyanshujindal',
     '123456'
   )
   // console.log(id, verify_code)
@@ -48,15 +58,15 @@ async function userDatabase() {
     userId,
     '654321'
   )
-  // const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
-  // await userQueries.uploadAvatar(userId, file);
+  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
+  await userQueries.uploadAvatar(userId, file);
 }
 
 async function userTokenDatabase() {
   const { token, secret } = await userTokenQueries.newToken(1);
   // console.log(token, secret);
   const userId = await userTokenQueries.verifyToken(token, secret);
-  console.log(userId)
+  // console.log(userId)
 }
 
 async function fileDatabase() {
@@ -76,6 +86,29 @@ async function postDatabase() {
   // console.log(user_id, content, image);
   const posts = await postQueries.getUserPosts(1);
   // console.log(posts);
+}
+
+async function commentDatabase() {
+  const id = await commentQueries.createComment(1,1,'Some comment');
+  // console.log(id);
+  const comments = await commentQueries.getComments(1);
+  // console.log(comments);
+}
+
+async function friendDatabase() {
+  const id = await friendQueries.addRequest(1,2);
+  // console.log(id);
+  const friendRequests = await friendQueries.getFriendRequests(2);
+  // console.log(friendRequests);
+
+  let isFriends = await friendQueries.checkFriends(1,2);
+  // console.log(isFriends);
+  await friendQueries.approveRequest(friendRequests[0].id);
+  isFriends = await friendQueries.checkFriends(1,2);
+  // console.log(isFriends);
+
+  const friends = await friendQueries.getFriendsList(1);
+  console.log(friends);
 }
 
 testDatabase();
