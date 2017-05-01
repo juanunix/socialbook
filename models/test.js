@@ -3,6 +3,7 @@ const fs = require('fs');
 const fileQueries = require('./file');
 const userQueries = require('./user');
 const userTokenQueries = require('./user_token');
+const postQueries = require('./post');
 const initDatabase = require('./init');
 
 async function testDatabase() {
@@ -11,6 +12,7 @@ async function testDatabase() {
     await userDatabase();
     await userTokenDatabase();
     await fileDatabase();
+    await postDatabase();
     process.exit();
   } catch(e) {
     console.error(e);
@@ -54,7 +56,7 @@ async function userTokenDatabase() {
   const { token, secret } = await userTokenQueries.newToken(1);
   // console.log(token, secret);
   const userId = await userTokenQueries.verifyToken(token, secret);
-  // console.log(userId)
+  console.log(userId)
 }
 
 async function fileDatabase() {
@@ -63,6 +65,17 @@ async function fileDatabase() {
   const id = await fileQueries.insertFile(file);
   const content = await fileQueries.getFile(id);
   // console.log(content.toString('base64'));
+}
+
+async function postDatabase() {
+  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
+  const id = await postQueries.createPost(1, 'Some Content', file);
+  const anotherId = await postQueries.createPost(1, 'Some Other Content');
+  // console.log(id);
+  const { user_id, content, image } = await postQueries.getPost(id);
+  // console.log(user_id, content, image);
+  const posts = await postQueries.getUserPosts(1);
+  // console.log(posts);
 }
 
 testDatabase();

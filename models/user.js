@@ -18,6 +18,7 @@ exports.createTable = `
     avatar_id INT,
     verify_code VARCHAR(32),
     verified BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT LOCALTIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (avatar_id) REFERENCES Files(id)
   );

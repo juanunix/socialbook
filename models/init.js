@@ -2,10 +2,14 @@ const db = require('./db');
 const fileQueries = require('./file');
 const userQueries = require('./user');
 const userTokenQueries = require('./user_token');
+const postQueries = require('./post');
 
 async function clearDatabase() {
   try {
-    await db.query(userTokenQueries.dropTable);
+    await Promise.all([
+      db.query(postQueries.dropTable),
+      db.query(userTokenQueries.dropTable)
+    ]);
     await db.query(userQueries.dropTable);
     await db.query(fileQueries.dropTable);
   } catch(e) {
@@ -18,7 +22,10 @@ async function initDatabase() {
     await clearDatabase();
     await db.query(fileQueries.createTable);
     await db.query(userQueries.createTable);
-    await db.query(userTokenQueries.createTable);
+    await Promise.all([
+      db.query(userTokenQueries.createTable),
+      db.query(postQueries.createTable)
+    ])
   } catch(e) {
     console.error(e);
   }

@@ -12,6 +12,7 @@ exports.createTable = `
     token VARCHAR(100) NOT NULL,
     user_id INT NOT NULL,
     secret VARCHAR(100) NOT NULL,
+    last_used TIMESTAMP,
     PRIMARY KEY (token),
     FOREIGN KEY (user_id) REFERENCES Users(id)
   );
@@ -36,10 +37,10 @@ exports.newToken = async (user_id) => {
   await db.query(
     `
       INSERT INTO ${TABLE_NAME}
-      (token, user_id, secret)
-      VALUES($1,$2,$3);
+      (token, user_id, secret,last_used)
+      VALUES($1,$2,$3, $4);
     `,
-    [token, user_id, encrypted_secret]
+    [token, user_id, encrypted_secret, new Date()]
   )
   return {
     token,
@@ -53,9 +54,10 @@ exports.verifyToken = async (token, secret) => {
     `
       SELECT user_id, secret FROM ${TABLE_NAME}
       WHERE token=$1
+      AND last_used>$2
       LIMIT 1;
     `,
-    [token]
+    [token,new Date(Date.now() - 1000 * 60 * 60 * 24 * 30)]
   );
   if(rows.length === 0) {
     return false;
@@ -65,5 +67,13 @@ exports.verifyToken = async (token, secret) => {
   if (!isSecretValid) {
     return false;
   }
+  await db.query(
+    `
+      UPDATE ${TABLE_NAME}
+      SET last_used=$1
+      WHERE token=$2;
+    `,
+    [new Date(), token]
+  )
   return rows[0].user_id;
 }

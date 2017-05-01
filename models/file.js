@@ -1,6 +1,8 @@
 const db = require('./db');
 const TABLE_NAME = 'Files';
 
+exports.TABLE_NAME = TABLE_NAME;
+
 exports.dropTable = `
   DROP TABLE IF EXISTS ${TABLE_NAME};
 `
@@ -9,6 +11,7 @@ exports.createTable = `
   CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
     id SERIAL NOT NULL,
     content BYTEA NOT NULL,
+    created_at TIMESTAMP DEFAULT LOCALTIMESTAMP,
     PRIMARY KEY (id)
   );
 `
