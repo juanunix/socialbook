@@ -3,9 +3,9 @@ import Layout from './partials/layout';
 import Navbar from './partials/navbar';
 import Post from './partials/post';
 
-const Home = ({ posts }) => (
+const Home = ({ posts, user }) => (
   <Layout title="Home" className="home">
-    <Navbar />
+    <Navbar user={user} />
     <div className="home main">
       <form className="post-new" action="post.html">
         <div className="post-input">

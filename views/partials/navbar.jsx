@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = () => (
+const Navbar = ({ user }) => (
   <div className="header" id="header">
     <nav>
       <div className="nav-links">
@@ -25,15 +25,19 @@ const Navbar = () => (
         </form>
         <div className="profile-links">
           <div className="profile-icon logo icon" id="profile-icon">
-            <img src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image" />
+            {user &&
+              <img src={`/image/${user.avatar_id}`} alt="Profile image" />
+            }
           </div>
           <div className="profile-expandable">
             <div id="profile-overlay"></div>
             <div className="profile-expanded">
-              <a href="profile.html" className="profile-info">
-                <img className="avatar" src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" alt="Profile image" />
-                <span>Priyanshu Jindal</span>
-              </a>
+              {user &&
+                <a href={`/user/${user.username}`} className="profile-info">
+                  <img className="avatar" src={`/image/${user.avatar_id}`} alt="Profile image" />
+                  <span>{user.name}</span>
+                </a>
+              }
               {['Messages', 'Friends', 'Settings', 'Logout', 'Requests', 'Signout'].map(link => (
                 <div key={link} className="profile-actions">
                   <a href={'/' + link.toLowerCase()}>

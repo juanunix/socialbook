@@ -40,7 +40,7 @@ const posts = [
  * Home page.
  */
 exports.index = (req, res) => {
-  if(req.user) {
+  if(res.locals.user) {
     res.render('home', { posts });
   } else {
     res.render('account/login');

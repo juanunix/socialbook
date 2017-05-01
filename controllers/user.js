@@ -17,7 +17,7 @@ const friends = [
 ]
 
 /**
- * GET /user/:id
+ * GET /user/:username
  * Home page.
  */
 exports.getUser = (req, res) => {
@@ -25,7 +25,7 @@ exports.getUser = (req, res) => {
 }
 
 /**
- * GET /user/:id/friends
+ * GET /user/:username/friends
  * Home page.
  */
 exports.getFriends = (req, res) => {

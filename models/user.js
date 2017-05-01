@@ -145,3 +145,19 @@ exports.uploadAvatar = async (id, content) => {
     [avatar_id, id]
   );
 }
+
+exports.getUserInfo = async (id) => {
+  let { rows } = await db.query(
+    `
+      SELECT id,username,name,avatar_id
+      FROM ${TABLE_NAME}
+      WHERE id=$1
+      LIMIT 1;
+    `,
+    [id]
+  )
+  if(rows.length === 0) {
+    throw new Error('User not found');
+  }
+  return rows[0];
+}

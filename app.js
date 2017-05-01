@@ -7,6 +7,7 @@ const userController = require('./controllers/user');
 const homeController = require('./controllers/home');
 const messageController = require('./controllers/message');
 const postController = require('./controllers/post');
+const fileController = require('./controllers/file');
 
 const errorMiddleware = require('./middlewares/error-middleware');
 const authMiddleware = require('./middlewares/auth-middleware');
@@ -38,8 +39,8 @@ app.get('/signout', accountController.getSignout);
 app.get('/', homeController.index);
 app.get('/requests', homeController.getFriendRequests);
 
-app.get('/user/:id', userController.getUser);
-app.get('/user/:id/friends', userController.getFriends);
+app.get('/user/:username', userController.getUser);
+app.get('/user/:username/friends', userController.getFriends);
 app.get('/users', userController.getSearchResults);
 app.get('/users/:query', userController.getSearchResults);
 
@@ -47,6 +48,8 @@ app.get('/messages/:id', messageController.getUserChat);
 app.get('/messages', messageController.getMessagesList);
 
 app.get('/post/:id', postController.getPost);
+
+app.get('/image/:id', fileController.getFile);
 
 app.use(errorMiddleware);
 
