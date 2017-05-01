@@ -86,7 +86,8 @@ input:focus {
     border: 2px solid var(--primary);
 }
 
-button {
+button,
+.button {
     background-color: var(--primary);
     color: var(--primary-light-text);
     box-shadow: var(--elevation-2);
@@ -104,11 +105,26 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button[disabled],
+.button[disabled] {
+  background-color: var(--disabled-text);
+  box-shadow: none;
+  cursor: default;
+}
+
+button[disabled]:hover,
+.button[disabled]:hover {
+  background-color: var(--disabled-text);
+}
+
+button:hover,
+.button:hover {
     background-color: var(--primary-dark);
 }
 button:active,
-button:focus{
+button:focus,
+.button:focus,
+.button:active {
     background-color: var(--primary-dark);
     box-shadow: var(--elevation-8);
 }
@@ -596,11 +612,14 @@ User Page
     margin-left: 10px;
 }
 
-.user .profile-info .user-info .user-actions button {
+.user .profile-info .user-info .user-actions button,
+.user .profile-info .user-info .user-actions .button {
+    width: 40px;
     min-width: 0;
     margin:0 10px;
 }
-.user .profile-info .user-info .user-actions button img{
+.user .profile-info .user-info .user-actions .button img,
+.user .profile-info .user-info .user-actions button img {
     width: 24px;
     height: 24px;
 }
@@ -654,7 +673,7 @@ User Page
 
 
 .user .profile-info .user-actions-hidden {
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: flex-start;
     padding: 10px 12px;
@@ -662,7 +681,8 @@ User Page
     border: 1px solid var(--divider);
 }
 
-.user .profile-info .user-actions-hidden button {
+.user .profile-info .user-actions-hidden button,
+.user .profile-info .user-actions-hidden .button {
     margin: 0 10px;
 }
 
@@ -671,6 +691,10 @@ User Page
         flex-direction: row;
         width:400px;
         margin: 0 auto 20px;
+    }
+
+    .user .profile-info .user-actions-hidden {
+      display: flex;
     }
 
     .user .profile-info .pic{

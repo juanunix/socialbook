@@ -103,11 +103,11 @@ async function friendDatabase() {
   const friendRequests = await friendQueries.getFriendRequests(2);
   // console.log(friendRequests);
 
-  let isFriends = await friendQueries.checkFriends(1,2);
-  // console.log(isFriends);
+  let friendship = await friendQueries.checkFriends(1,2);
+  // console.log(friendship);
   await friendQueries.approveRequest(friendRequests[0].id);
-  isFriends = await friendQueries.checkFriends(1,2);
-  // console.log(isFriends);
+  friendship = await friendQueries.checkFriends(1,2);
+  // console.log(friendship);
 
   const friends = await friendQueries.getFriendsList(1);
   // console.log(friends);

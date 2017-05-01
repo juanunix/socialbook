@@ -64,7 +64,7 @@ exports.approveRequest = async (id) => {
 exports.checkFriends = async (first_id, second_id) => {
   const { rows } = await db.query(
     `
-      SELECT approved
+      SELECT approved,created_at
       FROM ${TABLE_NAME}
       WHERE
       (sender_id=$1 AND receiver_id=$2) OR
@@ -76,7 +76,7 @@ exports.checkFriends = async (first_id, second_id) => {
   if(rows.length === 0) {
     return false;
   }
-  return rows[0].approved;
+  return rows[0];
 }
 
 exports.getFriendsList = async(user_id) => {

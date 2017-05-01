@@ -1,3 +1,6 @@
+const userQueries = require('../models/user');
+const friendQueries = require('../models/friend');
+
 const friends = [
   {
     id: 1,
@@ -20,8 +23,22 @@ const friends = [
  * GET /user/:username
  * Home page.
  */
-exports.getUser = (req, res) => {
-  res.render('user')
+exports.getUser = async (req, res, next) => {
+  try {
+    const userProfile = await userQueries.getUserProfile(req.params.username);
+    var friendship;
+    if(res.locals.user && res.locals.user.id !== userProfile.id) {
+      friendship = await friendQueries.checkFriends(res.locals.user.id, userProfile.id);
+    }
+    res.render('user', { user: res.locals.user, profile: userProfile, friendship })
+    return;
+  } catch(e) {
+    next({
+      code: 404,
+      message: 'User not found',
+      path: '404'
+    })
+  }
 }
 
 /**

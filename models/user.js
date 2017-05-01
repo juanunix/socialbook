@@ -15,6 +15,7 @@ exports.createTable = `
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL,
+    bio TEXT,
     avatar_id INT,
     verify_code VARCHAR(32),
     verified BOOLEAN DEFAULT false,
@@ -155,6 +156,22 @@ exports.getUserInfo = async (id) => {
       LIMIT 1;
     `,
     [id]
+  )
+  if(rows.length === 0) {
+    throw new Error('User not found');
+  }
+  return rows[0];
+}
+
+exports.getUserProfile = async (username) => {
+  let { rows } = await db.query(
+    `
+      SELECT id,username,name,avatar_id,email,bio
+      FROM ${TABLE_NAME}
+      WHERE username=$1
+      LIMIT 1;
+    `,
+    [username]
   )
   if(rows.length === 0) {
     throw new Error('User not found');

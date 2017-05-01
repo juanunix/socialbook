@@ -1,49 +1,60 @@
-import React from 'react';
+import React, { Component } from 'react';
+import moment from 'moment';
 import Layout from './partials/layout';
 import Navbar from './partials/navbar';
 
-const User = () => (
+const User = ({ user, profile, friendship }) => (
   <Layout title="Account Settings">
-    <Navbar />
+    <Navbar user={user}/>
     <div className="user main">
       <section className="profile-info" id="profile-info">
         <div className="pic">
-          <img src="https://avatars0.githubusercontent.com/u/10034872?v=3&u=c267179bdce8ef8d2bcb303ae7ae20167e247972&s=400" />
+          <img src={`/image/${profile.avatar_id}`} />
         </div>
         <div className="user-container">
           <div className="user-info-container">
             <div className="user-info" id="user-info">
               <div className="user-details">
-                <span className="user-name">Priyanshu Jindal</span>
-                <span className="user-friendship">Friends from 2 years</span>
+                <span className="user-name">{profile.name}</span>
+                {friendship &&
+                  <span className="user-friendship">Friends from {moment(friendship.created_at).fromNow()}</span>
+                }
               </div>
               <div className="user-actions">
-                <button onclick="window.location='message.html';">
+                <a className="button" disabled={!user || user.id === profile.id} href="/message">
                   <img src="/icons/ic_message_white_36px.svg" />
-                </button>
-                <button onclick="window.location='user.html';">
-                  <img src="/icons/ic_add_white_36px.svg" />
-                </button>
+                </a>
+                {user && user.id !== profile.id && !friendship &&
+                  <form>
+                    <button>
+                      <img src="/icons/ic_add_white_36px.svg" />
+                    </button>
+                  </form>
+                }
               </div>
             </div>
           </div>
           <div className="user-actions-hidden">
-            <button onclick="window.location='message.html';">
+            <a className="button" disabled={!user || user.id === profile.id} href="/message">
               Message
-            </button>
-            <button onclick="window.location='user.html';">
-              Add Friend
-            </button>
+            </a>
+            {user && user.id !== profile.id && !friendship &&
+              <form>
+                <button onclick="window.location='user.html';">
+                  Add Friend
+                </button>
+              </form>
+            }
           </div>
           <div className="user-info-hidden">
             <div className="about info">
               <p className="field">About</p>
-              <p className="value">Email: <a href="mailto:priyanshujindal1995@gmail.com">priyanshujindal1995@gmail.com</a></p>
-              <p className="value">Username: prijindal</p>
+              <p className="value">Email: <a href={'mailto:' + profile.email}>{profile.email}</a></p>
+              <p className="value">Username: {profile.username}</p>
             </div>
             <div className="bio info">
               <p className="field">Bio</p>
-              <p className="value">This is just something about myself</p>
+              <p className="value">{profile.bio || profile.name}</p>
             </div>
             <div className="friends info">
               <p className="field">Friends</p>
