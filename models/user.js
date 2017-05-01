@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const db = require('./db');
+const fileQueries = require('./file');
 const TABLE_NAME = 'Users';
 
 exports.dropTable = `
@@ -131,4 +132,18 @@ exports.changePassword = async (id, password) => {
     `,
     [password, id]
   );
+}
+
+exports.uploadAvatar = async (id, content) => {
+  let avatar_id = await fileQueries.insertFile(content);
+  return await db.queryAsync(
+    `
+      UPDATE ${TABLE_NAME}
+      set avatar_id=?
+      WHERE id=?
+      LIMIT 1
+    `,
+    [avatar_id, id]
+  );
+  return avatar_id;
 }

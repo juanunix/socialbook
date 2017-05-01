@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const fileQueries = require('./file');
 const userQueries = require('./user');
 const userTokenQueries = require('./user_token');
@@ -8,6 +10,8 @@ async function testDatabase() {
     await initDatabase();
     await userDatabase();
     await userTokenDatabase();
+    await fileDatabase();
+    process.exit();
   } catch(e) {
     console.error(e);
   }
@@ -37,12 +41,22 @@ async function userDatabase() {
     userId,
     '654321'
   )
+  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
+  await userQueries.uploadAvatar(userId, file);
 }
 
 async function userTokenDatabase() {
   const { token, secret } = await userTokenQueries.newToken(1);
   const isValid = await userTokenQueries.verifyToken(token, secret);
   console.log(isValid)
+}
+
+async function fileDatabase() {
+  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
+  // console.dir(file)
+  const id = await fileQueries.insertFile(file);
+  const content = await fileQueries.getFile(id);
+  // console.log(content.toString('base'));
 }
 
 testDatabase();
