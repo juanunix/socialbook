@@ -6,6 +6,7 @@ const userTokenQueries = require('./user_token');
 const postQueries = require('./post');
 const commentQueries = require('./comment');
 const friendQueries = require('./friend');
+const messageQueries = require('./message');
 const initDatabase = require('./init');
 
 async function testDatabase() {
@@ -17,6 +18,7 @@ async function testDatabase() {
     await postDatabase();
     await commentDatabase();
     await friendDatabase();
+    await messageDatabase();
     process.exit();
   } catch(e) {
     console.error(e);
@@ -108,7 +110,16 @@ async function friendDatabase() {
   // console.log(isFriends);
 
   const friends = await friendQueries.getFriendsList(1);
-  console.log(friends);
+  // console.log(friends);
+}
+
+async function messageDatabase() {
+  let id = await messageQueries.sendMessage(1, 2, 'Hello');
+  id = await messageQueries.sendMessage(2, 1, 'Hey');
+  const messages = await messageQueries.getMessages(1, 2);
+  // console.log(messages);
+  const friendsWithMessages = await messageQueries.getFriendsWithMessages(1);
+  // console.log(friendsWithMessages[0]);
 }
 
 testDatabase();

@@ -5,6 +5,7 @@ const userTokenQueries = require('./user_token');
 const postQueries = require('./post');
 const commentQueries = require('./comment');
 const friendQueries = require('./friend');
+const messageQueries = require('./message');
 
 async function clearDatabase() {
   try {
@@ -13,6 +14,7 @@ async function clearDatabase() {
       db.query(postQueries.dropTable),
       db.query(userTokenQueries.dropTable),
       db.query(friendQueries.dropTable),
+      db.query(messageQueries.dropTable),
     ]);
     await db.query(userQueries.dropTable);
     await db.query(fileQueries.dropTable);
@@ -27,6 +29,7 @@ async function initDatabase() {
     await db.query(fileQueries.createTable);
     await db.query(userQueries.createTable);
     await Promise.all([
+      db.query(messageQueries.createTable),
       db.query(friendQueries.createTable),
       db.query(userTokenQueries.createTable),
       db.query(postQueries.createTable)
