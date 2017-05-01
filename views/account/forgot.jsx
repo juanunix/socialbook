@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './partials/layout';
+import Layout from '../partials/layout';
 
 const Forgot = () => (
   <Layout title="Forgot" className="login" scripts={false}>

@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from './partials/layout';
-import Navbar from './partials/navbar';
+import Layout from '../partials/layout';
+import Navbar from '../partials/navbar';
 
-const Account = () => (
+const Settings = () => (
   <Layout title="Account Settings">
     <Navbar />
     <div className="settings main">
@@ -34,4 +34,4 @@ const Account = () => (
   </Layout>
 );
 
-export default Account;
+export default Settings;

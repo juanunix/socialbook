@@ -1,6 +1,6 @@
 const express = require('express');
 
-const authController = require('./controllers/auth');
+const accountController = require('./controllers/account');
 const userController = require('./controllers/user');
 const homeController = require('./controllers/home');
 const messageController = require('./controllers/message');
@@ -18,11 +18,11 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
 
-app.get('/login', authController.getLogin);
-app.get('/signup', authController.getSignup);
-app.get('/forgot', authController.getForgot);
-app.get('/account', authController.getAccount);
-app.get('/reset/:token', authController.getReset);
+app.get('/login', accountController.getLogin);
+app.get('/signup', accountController.getSignup);
+app.get('/forgot', accountController.getForgot);
+app.get('/account/settings', accountController.getAccount);
+app.get('/reset/:token', accountController.getReset);
 
 app.get('/', homeController.index);
 

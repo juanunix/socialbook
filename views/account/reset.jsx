@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './partials/layout';
+import Layout from '../partials/layout';
 
 const ResetPassword = () => (
   <Layout title="Recover Password" className="login" scripts={false}>

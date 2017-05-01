@@ -3,7 +3,7 @@
  * Login page.
  */
 exports.getLogin = (req, res) => {
-  res.render('login');
+  res.render('account/login');
 }
 
 /**
@@ -11,15 +11,15 @@ exports.getLogin = (req, res) => {
  * Login page.
  */
 exports.getSignup = (req, res) => {
-  res.render('signup');
+  res.render('account/signup');
 }
 
 /**
- * GET /account
+ * GET /account/settings
  * Account Settings page.
  */
 exports.getAccount = (req, res) => {
-  res.render('account');
+  res.render('account/settings');
 }
 
 
@@ -28,7 +28,7 @@ exports.getAccount = (req, res) => {
  * Forgot page.
  */
 exports.getForgot = (req, res) => {
-  res.render('forgot');
+  res.render('account/forgot');
 }
 
 /**
@@ -36,5 +36,5 @@ exports.getForgot = (req, res) => {
  * Reset Token page.
  */
 exports.getReset = (req,res) => {
-  res.render('reset');
+  res.render('account/reset');
 }

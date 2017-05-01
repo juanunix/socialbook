@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './partials/layout';
+import Layout from '../partials/layout';
 
 const Signup = () => (
   <Layout title="Create new account" className="login" scripts={false}>
