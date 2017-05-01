@@ -33,11 +33,11 @@ exports.newToken = async (user_id) => {
               .toString('hex')
               .slice(0, 64);
   const encrypted_secret = await encrypt(secret);
-  await db.queryAsync(
+  await db.query(
     `
       INSERT INTO ${TABLE_NAME}
       (token, user_id, secret)
-      VALUES(?,?,?);
+      VALUES($1,$2,$3);
     `,
     [token, user_id, encrypted_secret]
   )
@@ -49,21 +49,21 @@ exports.newToken = async (user_id) => {
 
 exports.verifyToken = async (token, secret) => {
   if(!token || !secret) return false;
-  const [results] = await db.queryAsync(
+  const { rows } = await db.query(
     `
       SELECT user_id, secret FROM ${TABLE_NAME}
-      WHERE token=?
-      LIMIT 1
+      WHERE token=$1
+      LIMIT 1;
     `,
     [token]
   );
-  if(results.length === 0) {
+  if(rows.length === 0) {
     return false;
   }
-  var encrypted_secret = results[0].secret;
+  var encrypted_secret = rows[0].secret;
   const isSecretValid = await compare(secret, encrypted_secret);
   if (!isSecretValid) {
     return false;
   }
-  return results[0].user_id;
+  return rows[0].user_id;
 }

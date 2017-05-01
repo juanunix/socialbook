@@ -5,9 +5,9 @@ const userTokenQueries = require('./user_token');
 
 async function clearDatabase() {
   try {
-    await db.queryAsync(userTokenQueries.dropTable);
-    await db.queryAsync(userQueries.dropTable);
-    await db.queryAsync(fileQueries.dropTable);
+    await db.query(userTokenQueries.dropTable);
+    await db.query(userQueries.dropTable);
+    await db.query(fileQueries.dropTable);
   } catch(e) {
     console.error(e);
   }
@@ -16,9 +16,9 @@ async function clearDatabase() {
 async function initDatabase() {
   try {
     await clearDatabase();
-    await db.queryAsync(fileQueries.createTable);
-    await db.queryAsync(userQueries.createTable);
-    await db.queryAsync(userTokenQueries.createTable);
+    await db.query(fileQueries.createTable);
+    await db.query(userQueries.createTable);
+    await db.query(userTokenQueries.createTable);
   } catch(e) {
     console.error(e);
   }

@@ -7,35 +7,36 @@ exports.dropTable = `
 
 exports.createTable = `
   CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
-    id INT NOT NULL AUTO_INCREMENT,
-    content BLOB NOT NULL,
+    id SERIAL NOT NULL,
+    content BYTEA NOT NULL,
     PRIMARY KEY (id)
   );
 `
 
 exports.insertFile = async (content) => {
-  let [results] = await db.queryAsync(
+  let { rows } = await db.query(
     `
       INSERT INTO ${TABLE_NAME}
       (content)
-      VALUES(?)
+      VALUES($1)
+      RETURNING id;
     `,
     [content]
   )
-  return results.insertId;
+  return rows[0].id;
 }
 
 exports.getFile = async (id) => {
-  let [results] = await db.queryAsync(
+  let { rows } = await db.query(
     `
       SELECT content FROM ${TABLE_NAME}
-      WHERE id=?
+      WHERE id=$1
       LIMIT 1
     `,
     [id]
   )
-  if (results.length === 0) {
+  if (rows.length === 0) {
     throw new Error('No file found');
   }
-  return results[0].content
+  return rows[0].content
 }

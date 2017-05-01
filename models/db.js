@@ -1,15 +1,11 @@
-const mysql = require('mysql');
-const Promise = require('bluebird');
+const pg = require('pg');
+// const Promise = require('bluebird');
 
-const connection = mysql.createConnection({
+const pool = new pg.Pool({
   host     : 'localhost',
   user     : 'socialbook',
   password : 'socialbook',
   database : 'socialbook'
 });
 
-Promise.promisifyAll(connection, {
-  multiArgs: true,
-});
-
-module.exports = connection;
+module.exports = pool;

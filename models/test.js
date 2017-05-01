@@ -24,31 +24,37 @@ async function userDatabase() {
     'prijindal',
     '123456'
   )
+  // console.log(id, verify_code)
   const isVerified = await userQueries.verify(
     id,
     verify_code
-  )
+  );
+  // console.log(isVerified)
   const userId = await userQueries.login(
     'prijindal',
     '123456'
   );
+  // console.log(userId)
   const newCode = await userQueries.forgotPassword(userId);
+  // console.log(newCode)
   const isValidCode = await userQueries.verify(
     userId,
     newCode
   )
+  // console.log(isValidCode)
   await userQueries.changePassword(
     userId,
     '654321'
   )
-  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
-  await userQueries.uploadAvatar(userId, file);
+  // const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
+  // await userQueries.uploadAvatar(userId, file);
 }
 
 async function userTokenDatabase() {
   const { token, secret } = await userTokenQueries.newToken(1);
-  const isValid = await userTokenQueries.verifyToken(token, secret);
-  console.log(isValid)
+  // console.log(token, secret);
+  const userId = await userTokenQueries.verifyToken(token, secret);
+  // console.log(userId)
 }
 
 async function fileDatabase() {
@@ -56,7 +62,7 @@ async function fileDatabase() {
   // console.dir(file)
   const id = await fileQueries.insertFile(file);
   const content = await fileQueries.getFile(id);
-  // console.log(content.toString('base'));
+  // console.log(content.toString('base64'));
 }
 
 testDatabase();

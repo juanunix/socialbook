@@ -10,7 +10,7 @@ exports.dropTable = `
 
 exports.createTable = `
   CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
-    id INT NOT NULL AUTO_INCREMENT,
+    id SERIAL NOT NULL,
     username VARCHAR(50) NOT NULL,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
@@ -36,66 +36,67 @@ exports.signup = async (email, name, username, password) => {
         .toString('hex')
         .slice(0, 32);
   password = await encrypt(password);
-  const [results] = await db.queryAsync(
+  const { rows } = await db.query(
     `
       INSERT INTO ${TABLE_NAME}
       (email,name,username,password,verify_code)
-      VALUES(?,?,?,?,?);
+      VALUES($1,$2,$3,$4,$5)
+      RETURNING id;
     `,
     [email, name, username, password, verify_code]
   )
   return {
-    id: results.insertId,
+    id: rows[0].id,
     verify_code
   }
 }
 
 exports.login = async (username, password) => {
-  const [results] = await db.queryAsync(
+  const { rows } = await db.query(
     `
       SELECT id, password,verified FROM ${TABLE_NAME}
-      WHERE username=?
+      WHERE username=$1
       LIMIT 1
     `,
     [username]
   )
-  if (results.length === 0) {
+  if (rows.length === 0) {
     throw new Error('No user found');
   }
-  if(!results[0].verified) {
+  if(!rows[0].verified) {
     throw new Error('User is not verified');
   }
-  const isValidPassword = await compare(password, results[0].password);
+  const isValidPassword = await compare(password, rows[0].password);
   if (!isValidPassword) {
     throw new Error('Invalid password');
   } else {
-    return results[0].id
+    return rows[0].id
   }
   return null;
 }
 
 exports.verify = async (id, code) => {
-  const [results] = await db.queryAsync(
+  const { rows } = await db.query(
     `
       SELECT verify_code FROM ${TABLE_NAME}
-      WHERE id=?
-      LIMIT 1
+      WHERE id = $1
+      LIMIT 1;
     `,
     [id]
   );
-  if (results.length === 0) {
+  if (rows.length === 0) {
     throw new Error('No Field found');
   }
-  const { verify_code } = results[0];
+  const { verify_code } = rows[0];
   const isValid = verify_code === code;
   if (!isValid) {
     return false;
   }
-  await db.queryAsync(
+  await db.query(
     `
       UPDATE ${TABLE_NAME}
       SET verified = true, verify_code=null
-      WHERE id=?
+      WHERE id=$1
     `,
     [id]
   )
@@ -106,16 +107,15 @@ exports.forgotPassword = async (id) => {
   const verify_code = crypto.randomBytes(32)
         .toString('hex')
         .slice(0, 32);
-  const [results] = await db.queryAsync(
+  const results = await db.query(
     `
       UPDATE ${TABLE_NAME}
-      SET verify_code=?
-      WHERE id=?
-      LIMIT 1
+      SET verify_code=$1
+      WHERE id=$2;
     `,
     [verify_code, id]
   )
-  if(results.affectedRows === 0) {
+  if(results.rowCount === 0) {
     throw new Error('User not found');
   }
   return verify_code;
@@ -123,12 +123,11 @@ exports.forgotPassword = async (id) => {
 
 exports.changePassword = async (id, password) => {
   password = await encrypt(password);
-  return await db.queryAsync(
+  return await db.query(
     `
       UPDATE ${TABLE_NAME}
-      SET password=?
-      WHERE id=?
-      LIMIT 1
+      SET password=$1
+      WHERE id=$2;
     `,
     [password, id]
   );
@@ -136,7 +135,7 @@ exports.changePassword = async (id, password) => {
 
 exports.uploadAvatar = async (id, content) => {
   let avatar_id = await fileQueries.insertFile(content);
-  return await db.queryAsync(
+  return await db.query(
     `
       UPDATE ${TABLE_NAME}
       set avatar_id=?
