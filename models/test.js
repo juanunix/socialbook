@@ -106,7 +106,7 @@ async function postDatabase() {
   let posts = await postQueries.getUserPosts(1);
   // console.log(posts);
   posts = await postQueries.getNewsFeed(1);
-  console.log(posts);
+  // console.log(posts);
 }
 
 async function commentDatabase() {

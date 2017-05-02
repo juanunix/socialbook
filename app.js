@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+app.get('/image/:id', fileController.getFile);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser('Secure Key'))
 
@@ -48,8 +50,6 @@ app.get('/messages/:id', messageController.getUserChat);
 app.get('/messages', messageController.getMessagesList);
 
 app.get('/post/:id', postController.getPost);
-
-app.get('/image/:id', fileController.getFile);
 
 app.use(errorMiddleware);
 

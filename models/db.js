@@ -13,8 +13,6 @@ const config = {
   ssl: process.env.DATABASE_URL ? true : false
 };
 
-console.log(config);
-
 const pool = new pg.Pool(config);
 
 module.exports = pool;
