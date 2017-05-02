@@ -1,5 +1,7 @@
 const db = require('./db');
 const fileQueries = require('./file');
+const friendQueries = require('./friend');
+const userQueries = require('./user');
 const TABLE_NAME = 'Posts';
 
 exports.dropTable = `
@@ -61,16 +63,34 @@ exports.getPost = async (id) => {
 exports.getUserPosts = async (user_id) => {
   const { rows } = await db.query(
     `
-      SELECT id, content, image_id FROM ${TABLE_NAME}
+      SELECT id, content, image_id, created_at FROM ${TABLE_NAME}
       WHERE user_id=$1
       LIMIT 30;
     `,
     [user_id]
   )
-  for(var i = 0;i < rows.length;i+=1) {
-    if(rows[i].image_id) {
-      rows[i].image = await fileQueries.getFile(rows[i].image_id)
-    }
-  }
+  return rows;
+}
+
+exports.getNewsFeed = async (user_id) => {
+  const friends = await friendQueries.getFriendsList(1);
+  friends.push(user_id);
+  let { rows } = await db.query(
+    `
+      SELECT id,content,image_id,user_id,created_at
+      FROM ${TABLE_NAME}
+      WHERE user_id = ANY ($1)
+    `,
+    [friends]
+  )
+  const user_promises = [];
+  rows.forEach(row =>
+    user_promises.push(userQueries.getUserInfo(row.user_id))
+  )
+  const users = await Promise.all(user_promises);
+  rows = rows.map((row, index) => {
+    row.user = users[index];
+    return row;
+  })
   return rows;
 }

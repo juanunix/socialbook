@@ -15,9 +15,9 @@ async function testDatabase() {
     await userDatabase();
     await userTokenDatabase();
     await fileDatabase();
+    await friendDatabase();
     await postDatabase();
     await commentDatabase();
-    await friendDatabase();
     await messageDatabase();
     process.exit();
   } catch(e) {
@@ -79,24 +79,6 @@ async function fileDatabase() {
   // console.log(content.toString('base64'));
 }
 
-async function postDatabase() {
-  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
-  const id = await postQueries.createPost(1, 'Some Content', file);
-  const anotherId = await postQueries.createPost(1, 'Some Other Content');
-  // console.log(id);
-  const { user_id, content, image } = await postQueries.getPost(id);
-  // console.log(user_id, content, image);
-  const posts = await postQueries.getUserPosts(1);
-  // console.log(posts);
-}
-
-async function commentDatabase() {
-  const id = await commentQueries.createComment(1,1,'Some comment');
-  // console.log(id);
-  const comments = await commentQueries.getComments(1);
-  // console.log(comments);
-}
-
 async function friendDatabase() {
   const id = await friendQueries.addRequest(1,2);
   // console.log(id);
@@ -112,6 +94,28 @@ async function friendDatabase() {
   const friends = await friendQueries.getFriendsList(1);
   // console.log(friends);
 }
+
+
+async function postDatabase() {
+  const file = fs.readFileSync('/home/prijindal/Downloads/10034872.png');
+  const id = await postQueries.createPost(1, 'Some Content', file);
+  const anotherId = await postQueries.createPost(2, 'Some Other Content');
+  // console.log(id);
+  const { user_id, content, image } = await postQueries.getPost(id);
+  // console.log(user_id, content, image);
+  let posts = await postQueries.getUserPosts(1);
+  // console.log(posts);
+  posts = await postQueries.getNewsFeed(1);
+  console.log(posts);
+}
+
+async function commentDatabase() {
+  const id = await commentQueries.createComment(1,1,'Some comment');
+  // console.log(id);
+  const comments = await commentQueries.getComments(1);
+  // console.log(comments);
+}
+
 
 async function messageDatabase() {
   let id = await messageQueries.sendMessage(1, 2, 'Hello');
