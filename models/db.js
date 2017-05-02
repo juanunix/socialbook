@@ -1,12 +1,19 @@
 const pg = require('pg');
+const url = require('url');
 
-const config = process.env.DATABASE_URL || {
-  host     : 'localhost',
-  user     : 'socialbook',
-  password : 'socialbook',
-  database : 'socialbook',
-  max: 20,
-}
+const params = url.parse(process.env.DATABASE_URL || 'postgres://socialbook:socialbook@localhost:5432/socialbook');
+const auth = params.auth.split(':');
+
+const config = {
+  user: auth[0],
+  password: auth[1],
+  host: params.hostname,
+  port: params.port,
+  database: params.pathname.split('/')[1],
+  ssl: process.env.DATABASE_URL ? true : false
+};
+
+console.log(config);
 
 const pool = new pg.Pool(config);
 
