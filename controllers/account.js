@@ -37,7 +37,7 @@ exports.postLogin = async (req, res, next) => {
   } catch (e) {
     return next({
       code: 403,
-      message: 'Invalid Username or password',
+      message: e.message,
       path: 'account/login'
     })
   }
@@ -50,6 +50,56 @@ exports.postLogin = async (req, res, next) => {
  */
 exports.getSignup = (req, res) => {
   res.render('account/signup');
+}
+
+exports.postSignup = async (req, res, next) => {
+  if (!req.body) {
+    return next({
+      code: 401,
+      message: 'Server Error',
+      path: 'account/signup'
+    })
+  }
+  const { username, password, name, email } = req.body;
+  if(!username || !password || !name || !email) {
+    var missing = null
+    if(!password) missing = 'Password';
+    if(!username) missing = 'Username';
+    if(!name) missing = 'Name';
+    if(!email) missing = 'Username';
+    return next({
+      code: 401,
+      message: `${missing} is required`,
+      path: 'account/signup'
+    })
+  }
+  try {
+    const { id, verify_code } = await userQueries.signup(email, name, username, password);
+    // Send veriyf_code to email
+    console.log(`Sending ${verify_code} and encrypted ${id} to ${email}`)
+    const { token, secret } = await userTokenQueries.newToken(id);
+    res.cookie('user_id', id, { signed: true })
+    res.redirect(`/verify`);
+  } catch (e) {
+    console.error(e)
+    return next({
+      code: 403,
+      message: 'Username already exists',
+      path: 'account/signup'
+    })
+  }
+  next();
+}
+
+exports.getVerify = async (req, res) => {
+  const { user_id } = req.signedCookies
+  res.clearCookie('user_id')
+  if(user_id) {
+    const user = await userQueries.getUserInfo(res.locals.user_id);
+    res.render('account/verify', { user })
+  } else {
+    res.render('account/verify')
+  }
 }
 
 /**

@@ -33,6 +33,8 @@ app.use(authMiddleware);
 app.get('/login', accountController.getLogin);
 app.post('/login', accountController.postLogin);
 app.get('/signup', accountController.getSignup);
+app.post('/signup', accountController.postSignup);
+app.get('/verify', accountController.getVerify);
 app.get('/forgot', accountController.getForgot);
 app.get('/account/settings', accountController.getAccount);
 app.get('/reset/:token', accountController.getReset);

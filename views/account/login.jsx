@@ -16,12 +16,14 @@ const Login = ({ error }) => (
         <div className="input">
           <input id="username"
             type="text"
+            required
             placeholder="Username"
             name="username"/>
         </div>
         <div className="input">
           <input id="password"
             type="password"
+            required
             placeholder="Password"
             name="password"/>
         </div>
@@ -29,14 +31,14 @@ const Login = ({ error }) => (
           <button>Sign In</button>
         </div>
         <div className="forgot-link">
-          <a href="forgot.html">Forgot password?</a>
+          <a href="/forgot">Forgot password?</a>
         </div>
       </form>
       <div className="or">
         <span>or</span>
       </div>
       <div className="signup-link">
-        <a href="register.html">Click here to register</a>
+        <a href="/signup">Click here to register</a>
       </div>
     </div>
   </Layout>

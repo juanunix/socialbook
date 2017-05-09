@@ -34,9 +34,9 @@ const compare = async (original, hashed) => {
 }
 
 exports.signup = async (email, name, username, password) => {
-  const verify_code = crypto.randomBytes(32)
+  const verify_code = crypto.randomBytes(6)
         .toString('hex')
-        .slice(0, 32);
+        .slice(0, 6);
   password = await encrypt(password);
   const { rows } = await db.query(
     `
@@ -63,14 +63,14 @@ exports.login = async (username, password) => {
     [username]
   )
   if (rows.length === 0) {
-    throw new Error('No user found');
+    throw new Error('Invalid Username or password');
   }
   if(!rows[0].verified) {
     throw new Error('User is not verified');
   }
   const isValidPassword = await compare(password, rows[0].password);
   if (!isValidPassword) {
-    throw new Error('Invalid password');
+    throw new Error('Invalid Username or password');
   } else {
     return rows[0].id
   }
@@ -153,6 +153,7 @@ exports.getUserInfo = async (id) => {
       SELECT id,username,name,avatar_id
       FROM ${TABLE_NAME}
       WHERE id=$1
+      AND verified='true'
       LIMIT 1;
     `,
     [id]
