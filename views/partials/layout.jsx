@@ -14,13 +14,6 @@ const Layout = ({children, title, className, scripts}) => (
       {scripts &&
         <script src="/js/global.js"></script>
       }
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <script dangerouslySetInnerHTML={{__html: `
-        (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: ${process.env.ADSENSE_KEY || 'not found'},
-          enable_page_level_ads: true
-        });
-      `}} />
     </body>
   </html>
 );
