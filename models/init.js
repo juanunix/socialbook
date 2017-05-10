@@ -40,4 +40,6 @@ async function initDatabase() {
   }
 }
 
+initDatabase()
+
 module.exports = initDatabase;

@@ -147,16 +147,16 @@ exports.uploadAvatar = async (id, content) => {
   );
 }
 
-exports.getUserInfo = async (id) => {
+exports.getUserInfo = async (id, verified=true) => {
   let { rows } = await db.query(
     `
       SELECT id,username,name,avatar_id
       FROM ${TABLE_NAME}
       WHERE id=$1
-      AND verified='true'
+      AND verified=$2
       LIMIT 1;
     `,
-    [id]
+    [id, verified]
   )
   if(rows.length === 0) {
     throw new Error('User not found');
